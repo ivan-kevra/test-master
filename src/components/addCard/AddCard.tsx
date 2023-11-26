@@ -3,26 +3,19 @@ import cardStyle from '../card/Card.module.css'
 import buttStyle from '../button/Button.module.css'
 import {FC} from "react"
 import {useState} from 'react';
-
-import avatar1 from '../../res/man.png'
-import avatar2 from '../../res/woman.png'
-import priorityHigh from '../../icons/priorityHigh.svg'
-import priorityMid from '../../icons/priorityMid.svg'
 import priorityLow from '../../icons/priorityLow.svg'
-import statusList from '../../icons/status.svg'
 import deadlineIcon from '../../icons/deadline.svg'
 import addMember from '../../icons/addMember.svg'
 import files from '../../icons/file.svg'
-import messages from '../../icons/message.svg'
 
-type AddPropsType = {
+
+type AddCardPropsType = {
     isModalVisible: boolean
     onClose: () => void
     addCard: (title: string) => void
 }
 
-export const AddCard: FC<AddPropsType> = ({isModalVisible, onClose, addCard}) => {
-
+export const AddCard: FC<AddCardPropsType> = ({isModalVisible, onClose, addCard}) => {
     const [title, setTitle] = useState('')
 
     const close = () => {
@@ -36,7 +29,7 @@ export const AddCard: FC<AddPropsType> = ({isModalVisible, onClose, addCard}) =>
     }
 
     return(
-        <div  className={isModalVisible ? style.modal : style.none} onClick={close}>
+        <div className={isModalVisible ? style.modal : style.none} onClick={close}>
             <div className={style.content} onClick={e => e.stopPropagation()}>
                 <div className={style.header}>
                     <h3 className={style.title}>New task</h3>
@@ -54,10 +47,12 @@ export const AddCard: FC<AddPropsType> = ({isModalVisible, onClose, addCard}) =>
                                 <option className={style.option}>High</option>
                             </select>
                         </div>
-                        <input type="text" value={title} placeholder="Title" className={`${cardStyle.name} ${style.titleInput}`} onChange={(e) => {
-                                
-                                setTitle(e.currentTarget.value)
-                            }} />
+                        <input
+                        type="text" 
+                        value={title} 
+                        placeholder="Title" 
+                        className={`${cardStyle.name} ${style.titleInput}`} 
+                        onChange={(e) => {setTitle(e.currentTarget.value)}}/>
                         <div className={`${style.statusContainer} ${cardStyle.todo}`}>
                             <select className={style.status}>
                                 <option>To Do</option>
