@@ -4,7 +4,7 @@ import style from './App.module.css';
 import { Button } from './components/button/Button'
 import { TaskCategory } from './components/taskCategory/TaskCategory'
 import { Tasks } from './components/tasks/Tasks';
-import { CardType, CategoryType, FilterValuesType, TaskType, allTasks, taskCategory, taskType } from './state/state';
+import { CardType, FilterValuesType, TaskType, allTasks, taskType } from './state/state';
 import { AddCard } from './components/addCard/AddCard';
 
 export const App = () =>{
@@ -30,7 +30,6 @@ export const App = () =>{
   }
   
 
-
   const [isModalVisible, setModalVisiblity] = useState(false)
 
   function changeModalState(){
@@ -49,7 +48,7 @@ export const App = () =>{
       file: 2,
       message: 3
     }
-    const newTasks = [newCard, ...allTasks]
+    const newTasks = [newCard, ...filteredTasks]
     setTasks(newTasks);
   }
 
@@ -58,13 +57,10 @@ export const App = () =>{
       <AddCard isModalVisible={isModalVisible} onClose={changeModalState} addCard={addCard}/>
       <div className={style.header}>
         <Button onOpen={changeModalState}/>
-        <div className={style.taskCategory}>
-      <TaskCategory  setFilter={setFilter} filter={filter} />
-        </div>
+        <TaskCategory setFilter={setFilter} filter={filter}/>
       </div>
       <div className={style.tasks}>
-        {
-          taskType.map((tt: TaskType, index) => {
+        {taskType.map((tt: TaskType, index) => {
             const tasks = filteredTasks.filter(t => t.type === tt.filterParameter)
             return (
               <Tasks key={index}

@@ -14,7 +14,7 @@ export const TaskCategory: FC<TaskPropsType> = ({ filter, setFilter}) => {
     const doneTaskHandler = () => setFilter("Done")
 
     return( 
-        <>
+        <div className={style.taskCategory}>
             <div className={style.container} onClick={allTaskHandler}>
                 <input className={style.input} type="radio" checked={filter === "All"} />
                 <div className={style.indicator}/>
@@ -35,8 +35,7 @@ export const TaskCategory: FC<TaskPropsType> = ({ filter, setFilter}) => {
                 <div className={style.indicator}/>
                 <span className={style.text}>Done</span>
             </div>
-        </>
-       
+        </div>
     );
 }
 
