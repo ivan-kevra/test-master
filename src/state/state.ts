@@ -11,7 +11,6 @@ export type CardType = {
     file: number
     message: number
 }
-
 export type FilterValuesType = "All" | "To Do" | "Ongoing" | "Done"
 export type CardImportanceType = "high" | "mid" | "low"
 export type CardStatusType = "To Do" | "Ongoing" | "Done"

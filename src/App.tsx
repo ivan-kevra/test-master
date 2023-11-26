@@ -75,13 +75,15 @@ export const App = () =>{
       </div>
       <div className={style.tasks}>
         {
-          taskType.map((tt: TaskType, index) => 
-          <Tasks key={index}
-            type={tt.type}
-            checked={tt.checked}
-            tasks={filteredTasks.filter(t => t.type === tt.filterParameter)}
-          />)
-        }
+          taskType.map((tt: TaskType, index) => {
+            const tasks = filteredTasks.filter(t => t.type === tt.filterParameter)
+            return (
+              <Tasks key={index}
+              type={tt.type}
+              checked={tt.checked}
+              tasks={tasks}
+            />
+            )})}
       </div>
     </div>
   );
