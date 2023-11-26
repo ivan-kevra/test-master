@@ -62,16 +62,13 @@ export const AddCard: FC<AddCardPropsType> = ({isModalVisible, onClose, addCard}
                         </div>
                     </div>
                     <textarea placeholder="Description" className={`${cardStyle.description} ${style.description}`}/>
-
                     <div className={cardStyle.deadlineContainer}>
                         <img src={deadlineIcon}/>
                         <span className={cardStyle.deadlineText}>Deadline</span>: 
                         <input type="date" className={style.deadline}/>
                     </div>
-
                     <div className={`${cardStyle.footerContainer} ${style.footerContainer}`}>
                         <div className={cardStyle.members}>
-                          
                             <div className={cardStyle.avatar}>
                                 <img src={addMember}/>
                             </div>

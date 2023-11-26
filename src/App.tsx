@@ -1,8 +1,6 @@
 import {useState} from 'react';
 import {v1} from 'uuid'
-
 import style from './App.module.css';
-
 import { Button } from './components/button/Button'
 import { TaskCategory } from './components/taskCategory/TaskCategory'
 import { Tasks } from './components/tasks/Tasks';
@@ -17,10 +15,6 @@ export const App = () =>{
     
   const [filter, setFilter] = useState<FilterValuesType>("All")
 
-  function filterTasks(value: FilterValuesType){
-    setFilter(value);
-  }
-
   switch(filter){
     case "To Do":
       filteredTasks = tasks.filter(t => t.status === "To Do");
@@ -34,6 +28,8 @@ export const App = () =>{
     default:
       filteredTasks = tasks;
   }
+  
+
 
   const [isModalVisible, setModalVisiblity] = useState(false)
 
@@ -67,7 +63,7 @@ export const App = () =>{
           taskCategory.map((category: CategoryType, index) => 
           <TaskCategory key={index}
             filter={category.filter} 
-            filterTasks={filterTasks}
+            setFilter={setFilter}
             checked={filter === category.filter}
           />)
         }

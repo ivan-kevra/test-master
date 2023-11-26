@@ -4,14 +4,12 @@ import {FC} from "react"
 
 type TaskPropsType = {
     filter: FilterValuesType
+    setFilter: (value: FilterValuesType) => void
     checked: boolean
-    filterTasks: (value: FilterValuesType) => void
 }
 
-export const TaskCategory: FC<TaskPropsType> = ({filter, checked, filterTasks}) => {
-
-    const filterTaskHandler = () => filterTasks(filter)
-
+export const TaskCategory: FC<TaskPropsType> = ({filter, checked, setFilter}) => {
+    const filterTaskHandler = () => setFilter(filter)
     return(
         <div className={style.container} onClick={filterTaskHandler}>
             <input className={style.input} type="radio" name="task" checked={checked} readOnly/>
