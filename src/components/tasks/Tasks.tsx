@@ -11,10 +11,7 @@ type TasksPropsType = {
     tasks: Array<CardType>
 }
 
-
-
 export const Tasks: FC<TasksPropsType> = ({type, checked, tasks}) => {
-
     return(
         <div className={style.container}>
             <Tab type={type} num={tasks.length} checked={checked}/>

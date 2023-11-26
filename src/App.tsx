@@ -28,7 +28,6 @@ export const App = () =>{
     default:
       filteredTasks = tasks;
   }
-  
 
   const [isModalVisible, setModalVisiblity] = useState(false)
 
