@@ -13,22 +13,18 @@ export type CardType = {
 }
 
 export type FilterValuesType = "All" | "To Do" | "Ongoing" | "Done"
-
 export type CardImportanceType = "high" | "mid" | "low"
 export type CardStatusType = "To Do" | "Ongoing" | "Done"
 export type CardTypeType = "today" | "upcoming" | "completed"
-
 export type TaskType = {
     type: string
     checked: boolean
     filterParameter: CardTypeType
 }
-
 export type CategoryType = {
     filter: FilterValuesType
 }
-
-export const allTasks: CardType[] = [{
+export const allTasks: Array<CardType> = [{
     id: v1(),
     name: "Project X dashboard UI design",
     description: "Dashboard UI design is a visually engaging and intuitively structured interface tailored to streamline project management",
@@ -142,20 +138,16 @@ export const taskType: TaskType[] = [{
     checked: true,
     filterParameter: "today"
 },
-
 {
     type: "Upcoming",
     checked: false,
     filterParameter: "upcoming"
 },
-
 {
     type: "Completed",
     checked: false,
     filterParameter: "completed"
 }]
-
-
 export const taskCategory: CategoryType[] = [{
     filter: 'All'
 },

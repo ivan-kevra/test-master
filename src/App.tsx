@@ -11,7 +11,9 @@ import { AddCard } from './components/addCard/AddCard';
 
 export const App = () =>{
 
-  let tasks: CardType[] = [];
+  const [tasks, setTasks] = useState<Array<CardType>>(allTasks)
+
+  let filteredTasks: Array<CardType> = []
     
   const [filter, setFilter] = useState<FilterValuesType>("All")
 
@@ -19,22 +21,20 @@ export const App = () =>{
     setFilter(value);
   }
 
-  
-
   switch(filter){
     case "To Do":
-      tasks = allTasks.filter(t => t.status === "To Do");
+      filteredTasks = tasks.filter(t => t.status === "To Do");
       break;
     case "Ongoing":
-      tasks = allTasks.filter(t => t.status === "Ongoing");
+      filteredTasks = tasks.filter(t => t.status === "Ongoing");
       break;
     case "Done":
-      tasks = allTasks.filter(t => t.status === "Done");
+      filteredTasks = tasks.filter(t => t.status === "Done");
       break;
     default:
-      tasks = allTasks;
+      filteredTasks = tasks;
   }
-const [displayedTasks, setDisplayedTasks] = useState<Array<CardType>>(tasks)
+
   const [isModalVisible, setModalVisiblity] = useState(false)
 
   function changeModalState(){
@@ -54,7 +54,7 @@ const [displayedTasks, setDisplayedTasks] = useState<Array<CardType>>(tasks)
       message: 3
     }
     const newTasks = [newCard, ...allTasks]
-    setDisplayedTasks(newTasks);
+    setTasks(newTasks);
   }
 
   return (
@@ -79,7 +79,7 @@ const [displayedTasks, setDisplayedTasks] = useState<Array<CardType>>(tasks)
           <Tasks key={index}
             type={tt.type}
             checked={tt.checked}
-            tasks={displayedTasks.filter(t => t.type === tt.filterParameter)}
+            tasks={filteredTasks.filter(t => t.type === tt.filterParameter)}
           />)
         }
       </div>
