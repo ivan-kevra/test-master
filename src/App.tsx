@@ -59,14 +59,7 @@ export const App = () =>{
       <div className={style.header}>
         <Button onOpen={changeModalState}/>
         <div className={style.taskCategory}>
-        {
-          taskCategory.map((category: CategoryType, index) => 
-          <TaskCategory key={index}
-            filter={category.filter} 
-            setFilter={setFilter}
-            checked={filter === category.filter}
-          />)
-        }
+      <TaskCategory  setFilter={setFilter} filter={filter} />
         </div>
       </div>
       <div className={style.tasks}>
